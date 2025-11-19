@@ -3,7 +3,6 @@ E-commerce Inventory Management System
 This system manages products, orders, and inventory for an online store.
 """
 
-from dataclasses import dataclass
 from datetime import datetime
 import json
 
@@ -40,23 +39,23 @@ class Product:
         }
 
 
-@dataclass
 class OrderItem:
-    product_id: str
-    quantity: int
-    unit_price: float
+    def __init__(self, product_id, quantity, unit_price):
+        self.product_id = product_id
+        self.quantity = quantity
+        self.unit_price = unit_price
     
     def get_total_price(self):
         return self.quantity * self.unit_price
 
 
-@dataclass
 class Customer:
-    customer_id: str
-    name: str
-    email: str
-    phone = None
-    address = None
+    def __init__(self, customer_id, name, email, phone=None, address=None):
+        self.customer_id = customer_id
+        self.name = name
+        self.email = email
+        self.phone = phone
+        self.address = address
     
     def get_contact_info(self):
         contact = {"email": self.email}
